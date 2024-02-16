@@ -14,12 +14,30 @@
     <script type="module" src="/src/greet-message.ts"></script>
     <script type="module" src="/src/lifecycle-demo.ts"></script>
     <script type="module" src="/src/my-element.ts"></script>
+    <script type="module" src="/src/slots-demo.ts"></script>
     <script type="module" src="/src/state-changes.ts"></script>
   </head>
   <body x-data="{text: 'initial', show: false}">
     <my-element>
       <h1>Vite + Lit</h1>
     </my-element>
+
+    <slots-demo>
+      <!-- The next line goes in the default slot. -->
+      Menu
+      <ul slot="breakfast">
+        <li>Eggs</li>
+        <li>Bacon</li>
+      </ul>
+      <ul slot="lunch">
+        <li>PBJ</li>
+      </ul>
+      <ul slot="dinner">
+        <li>spaghetti</li>
+        <li>tacos</li>
+        <li>fried rice</li>
+      </ul>
+    </slots-demo>
 
     <alert-on-click></alert-on-click>
 
