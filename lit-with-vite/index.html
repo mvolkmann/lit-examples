@@ -6,19 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + Lit + TS</title>
     <link rel="stylesheet" href="./src/index.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
     <script type="module" src="/src/alert-on-click.ts"></script>
     <script type="module" src="/src/greet-message.ts"></script>
     <script type="module" src="/src/lifecycle-demo.ts"></script>
     <script type="module" src="/src/my-element.ts"></script>
     <script type="module" src="/src/state-changes.ts"></script>
   </head>
-  <body>
+  <body x-data="{p: 'initial', show: false}">
     <my-element>
       <h1>Vite + Lit</h1>
     </my-element>
-    <!-- <alert-on-click></alert-on-click> -->
-    <!-- <greet-message name="Tami"></greet-message> -->
+    <alert-on-click></alert-on-click>
+    <greet-message name="Tami"></greet-message>
     <!-- <state-changes p="initial"></state-changes> -->
-    <lifecycle-demo p="initial"></lifecycle-demo>
+    <button @click="show = !show">Toggle Show</button>
+    <input type="text" x-model="p" />
+    <template x-if="show">
+      <lifecycle-demo :p="p"></lifecycle-demo>
+    </template>
   </body>
 </html>
