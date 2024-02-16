@@ -1,9 +1,9 @@
 import {css, html, LitElement} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
 
-@customElement('greet-message')
-export class GreetMessage extends LitElement {
-  @property() name = '';
+export class GreetMessage2 extends LitElement {
+  static properties = {
+    name: {type: String}
+  };
 
   render() {
     if (!this.name) throw new Error('name is a required attribute');
@@ -16,3 +16,4 @@ export class GreetMessage extends LitElement {
     }
   `;
 }
+customElements.define('greet-message2', GreetMessage2);
