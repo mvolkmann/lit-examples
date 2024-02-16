@@ -1,17 +1,12 @@
 import {LitElement, html} from 'lit';
-import {customElement, property, state} from 'lit/decorators.js';
+import {customElement, property} from 'lit/decorators.js';
 
 @customElement('lifecycle-demo')
 export class LifecycleDemo extends LitElement {
-  @property() p = '';
-  @state() s = 'initial';
+  @property() text = '';
 
-  changeP() {
-    this.p = 'changed';
-  }
-
-  changeS() {
-    this.s = 'changed';
+  changeText() {
+    this.text = 'changed';
   }
 
   constructor() {
@@ -41,12 +36,8 @@ export class LifecycleDemo extends LitElement {
   render() {
     return html`
       <div>
-        p: ${this.p}
-        <button @click=${this.changeP}>Change</button>
-      </div>
-      <div>
-        s: ${this.s}
-        <button @click=${this.changeS}>Change</button>
+        p: ${this.text}
+        <button @click=${this.changeText}>Change</button>
       </div>
     `;
   }

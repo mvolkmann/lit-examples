@@ -16,17 +16,18 @@
     <script type="module" src="/src/my-element.ts"></script>
     <script type="module" src="/src/state-changes.ts"></script>
   </head>
-  <body x-data="{p: 'initial', show: false}">
+  <body x-data="{text: 'initial', show: false}">
     <my-element>
       <h1>Vite + Lit</h1>
     </my-element>
     <alert-on-click></alert-on-click>
     <greet-message name="Tami"></greet-message>
     <!-- <state-changes p="initial"></state-changes> -->
+
     <button @click="show = !show">Toggle Show</button>
-    <input type="text" x-model="p" />
+    <label>Text: <input type="text" x-model="text" /></label>
     <template x-if="show">
-      <lifecycle-demo :p="p"></lifecycle-demo>
+      <lifecycle-demo :text="text"></lifecycle-demo>
     </template>
   </body>
 </html>
