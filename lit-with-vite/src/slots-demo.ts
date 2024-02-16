@@ -13,14 +13,13 @@ export class SlotsDemo extends LitElement {
 
   override connectedCallback(): void {
     super.connectedCallback();
-    console.log('slots-demo.ts : this.defaultElements =', this.defaultElements);
-    console.log(
-      'slots-demo.ts : this.breakfastElements =',
-      this.breakfastElements
-    );
-    for (const el of this.breakfastElements) {
-      el.style.color = 'red';
-    }
+    setTimeout(() => {
+      console.log('this.defaultElements =', this.defaultElements);
+      console.log('this.breakfastElements =', this.breakfastElements);
+      for (const el of this.breakfastElements) {
+        el.style.color = 'red';
+      }
+    }, 0);
   }
 
   render() {
