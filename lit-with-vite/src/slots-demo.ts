@@ -14,6 +14,7 @@ export class SlotsDemo extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
     setTimeout(() => {
+      // TODO: Why don't the default slot elements get captured?
       console.log('this.defaultElements =', this.defaultElements);
       console.log('this.breakfastElements =', this.breakfastElements);
       for (const el of this.breakfastElements) {
