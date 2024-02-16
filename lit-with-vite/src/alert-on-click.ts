@@ -37,7 +37,11 @@ export class AlertOnClick extends LitElement {
   `;
 }
 
-// TODO: What does this add?
+// The following code is optional.
+// It enables TypeScript to infer that the type of `el`
+// in the following line is `AlertOnClick`.
+// const el = document.createElement('alert-on-click');
+// Without this, TypeScript will assume the type is `HTMLElement`.
 declare global {
   interface HTMLElementTagNameMap {
     'alert-on-click': AlertOnClick;
