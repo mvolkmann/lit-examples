@@ -5,18 +5,21 @@ import {customElement, queryAssignedElements} from 'lit/decorators.js';
 export class SlotsDemo extends LitElement {
   @queryAssignedElements({
     // selector: 'li'
-    slot: 'lunch'
+    slot: 'breakfast'
   })
-  lunchSlot!: HTMLElement[];
+  breakfastElements!: HTMLElement[];
   @queryAssignedElements()
-  defaultSlot!: HTMLElement[];
+  defaultElements!: HTMLElement[];
 
   override connectedCallback(): void {
     super.connectedCallback();
-    console.log('slots-demo.ts : this.defaultSlot =', this.lunchSlot);
-    console.log('slots-demo.ts : this.lunchSlot =', this.lunchSlot);
-    for (const option of this.lunchSlot) {
-      option.style.color = 'red';
+    console.log('slots-demo.ts : this.defaultElements =', this.defaultElements);
+    console.log(
+      'slots-demo.ts : this.breakfastElements =',
+      this.breakfastElements
+    );
+    for (const el of this.breakfastElements) {
+      el.style.color = 'red';
     }
   }
 
