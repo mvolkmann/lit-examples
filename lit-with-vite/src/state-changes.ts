@@ -1,14 +1,19 @@
 import {html, LitElement} from 'lit';
-import {customElement, property, state} from 'lit/decorators.js';
+import {customElement, property, queryAll, state} from 'lit/decorators.js';
 
 @customElement('state-changes')
 export class StateChanges extends LitElement {
   @property() p = '';
   @state() s = 'initial';
   v = 'non-reactive';
+  @queryAll('button') buttons!: NodeList;
 
   changeP() {
-    this.p = 'changed';
+    this.p = this.p === 'go' ? 'stop' : 'go';
+    for (const node of this.buttons) {
+      const button = node as HTMLButtonElement;
+      button.style.color = this.p === 'go' ? 'green' : 'red';
+    }
   }
 
   changeS() {
@@ -25,7 +30,7 @@ export class StateChanges extends LitElement {
 
   render() {
     return html`
-      <div>
+      <div id="p">
         p: ${this.p}
         <button @click=${this.changeP}>Change</button>
       </div>
