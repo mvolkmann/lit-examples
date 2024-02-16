@@ -11,6 +11,7 @@ export class SlotsDemo extends LitElement {
   @queryAssignedElements()
   defaultElements!: HTMLElement[];
 
+  // TODO: Try to use the `firstUpdated` lifecycle method instead.
   override connectedCallback(): void {
     super.connectedCallback();
     setTimeout(() => {
