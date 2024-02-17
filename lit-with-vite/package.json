@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "reinstall": "rm -rf node_modules bun.lockb && bun install"
+    "reinstall": "rm -rf node_modules package-lock.json && npm install",
+    "reinstall-bun": "rm -rf node_modules bun.lockb && bun install"
   },
   "dependencies": {
     "lit": "^3.1.2"
