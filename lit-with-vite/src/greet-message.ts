@@ -4,10 +4,13 @@ import {customElement, property} from 'lit/decorators.js';
 @customElement('greet-message')
 export class GreetMessage extends LitElement {
   @property() name = '';
+  @property({type: Boolean}) shout = false;
 
   render() {
     if (!this.name) throw new Error('name is a required attribute');
-    return html`<div>Hello, ${this.name}!</div>`;
+    let message = `Hello, ${this.name}!`;
+    if (this.shout) message = message.toUpperCase();
+    return html`<div>${message}!</div>`;
   }
 
   static styles = css`

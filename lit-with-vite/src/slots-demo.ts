@@ -1,27 +1,30 @@
 import {html, LitElement} from 'lit';
+import type {PropertyValueMap} from 'lit';
 import {customElement, queryAssignedElements} from 'lit/decorators.js';
 
 @customElement('slots-demo')
 export class SlotsDemo extends LitElement {
+  // To get an array of HTMLElement objects rather than Node objects,
+  // use @queryAssignedElements.
+  // Use @queryAssignedNodes when you also
+  // want to capture Node objects like Text.
   @queryAssignedElements({
     // selector: 'li'
     slot: 'breakfast'
   })
   breakfastElements!: HTMLElement[];
+
   @queryAssignedElements()
   defaultElements!: HTMLElement[];
 
-  // TODO: Try to use the `firstUpdated` lifecycle method instead.
-  override connectedCallback(): void {
-    super.connectedCallback();
-    setTimeout(() => {
-      // TODO: Why don't the default slot elements get captured?
-      console.log('this.defaultElements =', this.defaultElements);
-      console.log('this.breakfastElements =', this.breakfastElements);
-      for (const el of this.breakfastElements) {
-        el.style.color = 'red';
-      }
-    }, 0);
+  override firstUpdated(changedProperties: PropertyValueMap<any>): void {
+    super.firstUpdated(changedProperties);
+    for (const el of this.defaultElements) {
+      el.style.color = 'red';
+    }
+    for (const el of this.breakfastElements) {
+      el.style.color = 'green';
+    }
   }
 
   render() {
