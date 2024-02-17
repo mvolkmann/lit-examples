@@ -30,7 +30,7 @@ export class SlotsDemo extends LitElement {
   render() {
     return html`
       <div>
-        <h2><slot></slot></h2>
+        <h2><slot /></h2>
         <h3>Breakfast</h3>
         <slot name="breakfast">No breakfast options</slot>
         <h3>Lunch</h3>
