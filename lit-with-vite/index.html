@@ -18,7 +18,7 @@
     <script type="module" src="/src/slots-demo.ts"></script>
     <script type="module" src="/src/state-changes.ts"></script>
   </head>
-  <body x-data="{text: 'initial', show: false}">
+  <body x-data="{name: 'Shadow', text: 'initial', show: false}">
     <my-element>
       <h1>Vite + Lit</h1>
     </my-element>
@@ -44,7 +44,9 @@
 
     <greet-message name="World"></greet-message>
     <greet-message name="World" shout></greet-message>
-    <greet-message3 name="Shadow"></greet-message3>
+    <!-- <greet-message3 :name="name"></greet-message3> -->
+    <greet-message3 name="name"></greet-message3>
+    <button @click="name = 'changed'">Change Name</button>
 
     <state-changes p="initial"></state-changes>
 
