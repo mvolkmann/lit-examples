@@ -53,6 +53,7 @@ export class GreetMessage extends LitElement {
     let message = `Hello, ${this.name}!`;
     if (this.shout) message = message.toUpperCase();
 
+    // The dot before `disabled` below creates a one-way property binding.
     return html`
       <div>${message}</div>
       <form
