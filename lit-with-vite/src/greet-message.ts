@@ -1,25 +1,32 @@
 import {css, html, LitElement, type PropertyValueMap} from 'lit';
-import {customElement, property, query} from 'lit/decorators.js';
+import {customElement, property, query, state} from 'lit/decorators.js';
 
 @customElement('greet-message')
 export class GreetMessage extends LitElement {
+  @state() newName = '';
+
   @property({
     // This can validate proposed property value changes.
     hasChanged(newVal: string, oldVal: string) {
       console.log('hasChanged for name: changing from', oldVal, 'to', newVal);
       // Only allow the change if the length is more than 1.
       const valid = newVal.length > 1;
-      console.log('hasChanged: valid =', valid);
       return valid;
     }
   })
   name = '';
 
+  // This is set based on the presence of the "shout" attribute.
   @property({type: Boolean}) shout = false;
 
+  // This gets a reference to the DOM element with id "nameInput".
   @query('#nameInput') nameInput!: HTMLInputElement;
 
-  attributeChangedCallback(name: string, old: string, value: string): void {
+  override attributeChangedCallback(
+    name: string,
+    old: string,
+    value: string
+  ): void {
     super.attributeChangedCallback(name, old, value);
     console.log(
       'attributeChangedCallback:',
@@ -30,38 +37,42 @@ export class GreetMessage extends LitElement {
       value
     );
   }
-
-  render() {
-    if (!this.name) throw new Error('name is a required attribute');
-    let message = `Hello, ${this.name}!`;
-    if (this.shout) message = message.toUpperCase();
-    return html`
-      <div>${message}</div>
-      <input id="nameInput" size="20" type="text" />
-      <button @click=${this.handleClick}>Update</button>
-    `;
+  override connectedCallback(): void {
+    super.connectedCallback();
+    console.log('connectedCallback entered');
   }
 
-  async handleClick() {
-    console.log('handleClick: entered');
-    console.log('handleClick: hasUpdated =', this.hasUpdated);
-    console.log('handleClick: nameInput =', this.nameInput);
-    this.name = this.nameInput.value;
+  override disconnectedCallback(): void {
+    super.disconnectedCallback();
+    console.log('disconnectedCallback entered');
+  }
 
-    // These are useful when non-reactive properties are changed
-    // and the UI should be updated.
-    // this.requestUpdate(); // does an asynchronous update
-    // this.performUpdate(); // does a synchronous update
+  override render() {
+    if (!this.name) throw new Error('name is a required attribute');
 
-    // This is a Promise used to wait for update to complete.
-    // await this.updateComplete;
+    let message = `Hello, ${this.name}!`;
+    if (this.shout) message = message.toUpperCase();
 
-    // Sometimes it is desirable to dispatch a custom event
-    // AFTER an update completes.
-    // this.dispatchEvent(new Event(
-    //   'my-custom-event',
-    //   { bubbles: true, detail: 19 }
-    // ));
+    return html`
+      <div>${message}</div>
+      <form
+        @submit=${(e: SubmitEvent) => {
+          e.preventDefault();
+          this.name = this.newName;
+          this.newName = ''; // clears the input
+        }}
+      >
+        <input
+          id="nameInput"
+          type="text"
+          size="20"
+          required
+          .value=${this.newName}
+          @input=${() => (this.newName = this.nameInput.value)}
+        />
+        <button .disabled=${this.newName.length <= 1}>Update</button>
+      </form>
+    `;
   }
 
   // This is called before `willUpdate`.
@@ -89,6 +100,7 @@ export class GreetMessage extends LitElement {
     console.log('firstUpdated: changedProperties =', changedProperties);
   }
 
+  // This is called after every call to `update`.
   override updated(changedProperties: PropertyValueMap<any>) {
     // no need to call super
     console.log('updated: changedProperties =', changedProperties);
@@ -97,6 +109,8 @@ export class GreetMessage extends LitElement {
   static styles = css`
     :host {
       color: purple;
+      font-size: 2rem;
+      font-weight: bold;
     }
   `;
 }
