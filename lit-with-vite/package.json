@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint --cache --ext=.ts --fix src",
+    "lint": "eslint --cache --ext=.js,.ts --fix src",
     "preview": "vite preview",
     "reinstall": "rm -rf node_modules package-lock.json && npm install",
     "reinstall-bun": "rm -rf node_modules bun.lockb && bun install"
