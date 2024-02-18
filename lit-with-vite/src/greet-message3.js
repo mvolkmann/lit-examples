@@ -40,7 +40,9 @@ export class GreetMessage extends HTMLElement {
     if (name === 'name') this.render();
   }
 
-  override render() {
+  // HTMLElement does not define a render method,
+  // so we are not overriding a superclass method here.
+  render() {
     const name = this.getAttribute('name');
     this.shadowRoot.innerHTML = `
       <style>
