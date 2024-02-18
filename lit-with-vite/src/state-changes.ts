@@ -28,7 +28,7 @@ export class StateChanges extends LitElement {
     this.requestUpdate();
   }
 
-  render() {
+  override render() {
     return html`
       <div id="p">
         p: ${this.p}

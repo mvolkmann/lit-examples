@@ -23,7 +23,7 @@ export class MyElement extends LitElement {
   @property({type: Number})
   count = 0;
 
-  render() {
+  override render() {
     return html`
       <div>
         <a href="https://vitejs.dev" target="_blank">

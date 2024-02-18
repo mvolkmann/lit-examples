@@ -11,7 +11,7 @@ export class AlertOnClick extends LitElement {
     alert('in handleClick method');
   }
 
-  render() {
+  override render() {
     return html`
       <button @click=${this.handleClick}>Click Me</button>
       <button @click=${handleClick}>Click Me</button>

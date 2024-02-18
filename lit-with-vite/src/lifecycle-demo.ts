@@ -33,7 +33,7 @@ export class LifecycleDemo extends LitElement {
     console.log('disconnectedCallback entered');
   }
 
-  render() {
+  override render() {
     return html`
       <div>
         text: ${this.text}

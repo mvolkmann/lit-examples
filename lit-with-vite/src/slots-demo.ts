@@ -26,7 +26,7 @@ export class SlotsDemo extends LitElement {
     }
   }
 
-  render() {
+  override render() {
     return html`
       <div>
         <h2><slot></slot></h2>

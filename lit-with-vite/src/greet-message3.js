@@ -40,7 +40,7 @@ export class GreetMessage extends HTMLElement {
     if (name === 'name') this.render();
   }
 
-  render() {
+  override render() {
     const name = this.getAttribute('name');
     this.shadowRoot.innerHTML = `
       <style>

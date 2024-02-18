@@ -5,7 +5,7 @@ export class GreetMessage2 extends LitElement {
     name: {type: String}
   };
 
-  render() {
+  override render() {
     if (!this.name) throw new Error('name is a required attribute');
     return html`<div>Hello, ${this.name}!</div>`;
   }
