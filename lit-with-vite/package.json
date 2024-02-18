@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "lint": "eslint --cache --ext=.ts --fix src",
     "preview": "vite preview",
     "reinstall": "rm -rf node_modules package-lock.json && npm install",
     "reinstall-bun": "rm -rf node_modules bun.lockb && bun install"
@@ -14,6 +15,10 @@
     "lit": "^3.1.2"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.0.1",
+    "@typescript-eslint/parser": "^7.0.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-lit": "^1.11.0",
     "typescript": "^5.2.2",
     "vite": "^5.1.0"
   }

@@ -1,4 +1,4 @@
-import {css, html, LitElement, type PropertyValueMap} from 'lit';
+import {css, html, LitElement, type PropertyValues} from 'lit';
 import {customElement, property, query, state} from 'lit/decorators.js';
 
 @customElement('greet-message')
@@ -80,32 +80,32 @@ export class GreetMessage extends LitElement {
   }
 
   // This is called before `willUpdate`.
-  override shouldUpdate(changedProperties: PropertyValueMap<any>) {
+  override shouldUpdate(changedProperties: PropertyValues): boolean {
     // no need to call super
     console.log('shouldUpdate: changedProperties =', changedProperties);
     return true;
   }
 
   // This is called before `update`.
-  override willUpdate(changedProperties: PropertyValueMap<any>) {
+  override willUpdate(changedProperties: PropertyValues) {
     // no need to call super
     console.log('willUpdate : changedProperties =', changedProperties);
   }
 
   // This is rarely implemented.  The super method calls `render`.
-  override update(changedProperties: PropertyValueMap<any>) {
+  override update(changedProperties: PropertyValues) {
     super.update(changedProperties); // must call this
     console.log('update: changedProperties =', changedProperties);
   }
 
   // This is called after the first call to `update`.
-  override firstUpdated(changedProperties: PropertyValueMap<any>) {
+  override firstUpdated(changedProperties: PropertyValues) {
     // no need to call super
     console.log('firstUpdated: changedProperties =', changedProperties);
   }
 
   // This is called after every call to `update`.
-  override updated(changedProperties: PropertyValueMap<any>) {
+  override updated(changedProperties: PropertyValues) {
     // no need to call super
     console.log('updated: changedProperties =', changedProperties);
   }

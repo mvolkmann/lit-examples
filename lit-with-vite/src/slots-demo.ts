@@ -1,5 +1,4 @@
-import {html, LitElement} from 'lit';
-import type {PropertyValueMap} from 'lit';
+import {html, LitElement, type PropertyValues} from 'lit';
 import {customElement, queryAssignedElements} from 'lit/decorators.js';
 
 @customElement('slots-demo')
@@ -17,7 +16,7 @@ export class SlotsDemo extends LitElement {
   @queryAssignedElements()
   defaultElements!: HTMLElement[];
 
-  override firstUpdated(changedProperties: PropertyValueMap<any>): void {
+  override firstUpdated(changedProperties: PropertyValues): void {
     super.firstUpdated(changedProperties);
     for (const el of this.defaultElements) {
       el.style.color = 'red';
@@ -30,7 +29,7 @@ export class SlotsDemo extends LitElement {
   render() {
     return html`
       <div>
-        <h2><slot /></h2>
+        <h2><slot></slot></h2>
         <h3>Breakfast</h3>
         <slot name="breakfast">No breakfast options</slot>
         <h3>Lunch</h3>
