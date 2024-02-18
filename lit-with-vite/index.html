@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + Lit + TS</title>
     <link rel="stylesheet" href="./src/index.css" />
+    <style>
+      :root {
+        --greet-message-color: green;
+      }
+    </style>
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
@@ -45,7 +50,7 @@
     <greet-message name="World"></greet-message>
     <greet-message name="World" shout></greet-message>
     <!-- <greet-message3 :name="name"></greet-message3> -->
-    <greet-message3 name="name"></greet-message3>
+    <greet-message3 :name="name"></greet-message3>
     <button @click="name = 'changed'">Change Name</button>
 
     <state-changes p="initial"></state-changes>
