@@ -9,17 +9,19 @@ type Todo = {
   completed: boolean;
 };
 
+const URL_PREFIX = 'https://jsonplaceholder.typicode.com/todos/';
+
 async function getTodo(id: number): Promise<Todo> {
-  const url = 'https://jsonplaceholder.typicode.com/todos/' + id;
-  const res = await fetch(url);
-  const todo = await res.json();
-  return todo;
+  const res = await fetch(URL_PREFIX + id);
+  return res.json();
 }
 
 @customElement('task-demo')
 export class TaskDemo extends LitElement {
   @state() todoId = 1;
 
+  // The task runs when the component is created,
+  // and again any time one of its arguments changes.
   task = new Task(this, {
     task: getTodo,
     args: () => [this.todoId]
@@ -28,7 +30,6 @@ export class TaskDemo extends LitElement {
   changeTodoId(e: Event) {
     const input = e.target as HTMLInputElement;
     this.todoId = Number(input.value);
-    this.task.run();
   }
 
   override render() {
@@ -42,13 +43,15 @@ export class TaskDemo extends LitElement {
     });
 
     return html`
+      <label
+        >Todo Id
+        <input
+          type="number"
+          @input=${this.changeTodoId}
+          .value=${this.todoId}
+        />
+      </label>
       ${taskDisplay}
-      <input
-        type="number"
-        size="2"
-        @input=${this.changeTodoId}
-        .value=${this.todoId}
-      />
     `;
   }
 
@@ -56,10 +59,15 @@ export class TaskDemo extends LitElement {
     :host {
       border: 1px dashed red;
       padding: 1rem;
+      width: 20rem;
     }
 
     h2 {
       margin: 0;
+    }
+
+    input {
+      width: 2rem;
     }
   `;
 }
