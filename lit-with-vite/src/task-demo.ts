@@ -12,8 +12,13 @@ type Todo = {
 const URL_PREFIX = 'https://jsonplaceholder.typicode.com/todos/';
 
 async function getTodo(id: number): Promise<Todo> {
-  const res = await fetch(URL_PREFIX + id);
-  return res.json();
+  // Simulate a long-running query.
+  return new Promise((resolve, reject) => {
+    setTimeout(async () => {
+      const res = await fetch(URL_PREFIX + id);
+      resolve(await res.json());
+    }, 1000);
+  });
 }
 
 @customElement('task-demo')
@@ -34,12 +39,12 @@ export class TaskDemo extends LitElement {
 
   override render() {
     const taskDisplay = this.task.render({
+      pending: () => html`<img alt="spinner" src="/spinner.gif" />`,
       complete: todo => html`
         <h2>${todo.title}</h2>
         <div>${todo.completed ? 'complete' : 'pending'}</div>
       `,
-      error: error => html`<div>Error: ${error}</div>`,
-      pending: () => html`<div>Loading Todo ...</div>`
+      error: error => html`<div>Error: ${error}</div>`
     });
 
     return html`
@@ -64,6 +69,11 @@ export class TaskDemo extends LitElement {
 
     h2 {
       margin: 0;
+    }
+
+    img[alt='spinner'] {
+      display: block;
+      height: 2rem;
     }
 
     input {
