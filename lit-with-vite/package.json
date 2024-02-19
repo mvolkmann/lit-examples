@@ -7,12 +7,16 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint --cache --ext=.js,.ts --fix src",
+    "localize:extract": "lit-localize extract",
+    "localize:build": "lit-localize build",
     "preview": "vite preview",
     "reinstall": "rm -rf node_modules package-lock.json && npm install",
     "reinstall-bun": "rm -rf node_modules bun.lockb && bun install"
   },
   "dependencies": {
     "@lit/context": "^1.1.0",
+    "@lit/localize": "^0.12.1",
+    "@lit/localize-tools": "^0.7.2",
     "@lit/task": "^1.0.0",
     "lit": "^3.1.2"
   },
