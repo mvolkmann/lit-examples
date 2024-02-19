@@ -1,4 +1,4 @@
-import {html, LitElement, type PropertyValues} from 'lit';
+import {css, html, LitElement, type PropertyValues} from 'lit';
 import {customElement, queryAssignedElements} from 'lit/decorators.js';
 
 @customElement('slots-demo')
@@ -39,4 +39,10 @@ export class SlotsDemo extends LitElement {
       </div>
     `;
   }
+
+  static styles = css`
+    ::slotted(ul) {
+      color: red;
+    }
+  `;
 }
