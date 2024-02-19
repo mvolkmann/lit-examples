@@ -16,6 +16,8 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
     <script type="module" src="/src/alert-on-click.ts"></script>
+    <script type="module" src="/src/context-demo.ts"></script>
+    <script type="module" src="/src/counter.ts"></script>
     <script type="module" src="/src/greet-message.ts"></script>
     <script type="module" src="/src/greet-message3.js"></script>
     <script type="module" src="/src/hello-world.js"></script>
@@ -23,13 +25,20 @@
     <script type="module" src="/src/my-element.ts"></script>
     <script type="module" src="/src/slots-demo.ts"></script>
     <script type="module" src="/src/state-changes.ts"></script>
+    <script type="module" src="/src/task-demo.ts"></script>
   </head>
   <body x-data="{name: 'Shadow', text: 'initial', show: false}">
     <!-- <my-element>
       <h1>Vite + Lit</h1>
     </my-element> -->
 
+    <task-demo></task-demo>
+
     <!-- <hello-world></hello-world> -->
+
+    <!-- <my-counter></my-counter> -->
+
+    <!-- <my-top></my-top> -->
 
     <slots-demo>
       <!-- The next line goes in the default slot. -->
@@ -47,7 +56,7 @@
 
     <!-- <alert-on-click></alert-on-click> -->
 
-    <greet-message name="World"></greet-message>
+    <!-- <greet-message name="World"></greet-message> -->
 
     <!-- <greet-message3 :name="name"></greet-message3> -->
 
