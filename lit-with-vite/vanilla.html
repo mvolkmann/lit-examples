@@ -3,12 +3,16 @@
   <head>
     <title>Web Component Demo</title>
     <style>
+      /* This targets the part named "header" in the web component. */
       vanilla-wc::part(header) {
         color: purple;
         font-size: 2rem;
         font-weight: bold;
         text-transform: uppercase;
       }
+
+      /* This targets all a elements in light DOM
+         which includes the elements inserted into slots. */
       vanilla-wc a {
         color: red;
       }
