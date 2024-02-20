@@ -10,6 +10,13 @@
       :root {
         --greet-message-color: green;
       }
+
+      vanilla-wc::part(header) {
+        color: purple;
+        font-size: 2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
     </style>
     <script
       defer
@@ -27,6 +34,7 @@
     <script type="module" src="/src/slots-demo.ts"></script>
     <script type="module" src="/src/state-changes.ts"></script>
     <script type="module" src="/src/task-demo.ts"></script>
+    <script type="module" src="/src/vanilla-wc.js"></script>
   </head>
   <body x-data="{name: 'Shadow', text: 'initial', show: false}">
     <!-- <my-element>
@@ -38,6 +46,15 @@
     <!-- <my-counter></my-counter> -->
 
     <!-- <my-top></my-top> -->
+
+    <vanilla-wc>
+      <div slot="nav">My nav will go here.</div>
+      <p>
+        Come and listen to a story about a man named Jed A poor mountaineer,
+        barely kept his family fed, Then one day he was shootin at some food And
+        up through the ground came a bubblin crude.
+      </p>
+    </vanilla-wc>
 
     <slots-demo>
       <!-- The next line goes in the default slot. -->
