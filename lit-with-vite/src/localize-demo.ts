@@ -1,12 +1,6 @@
 import {html, LitElement} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {
-  configureLocalization,
-  localized,
-  msg,
-  str,
-  updateWhenLocaleChanges
-} from '@lit/localize';
+import {configureLocalization, localized, msg} from '@lit/localize';
 
 import {
   allLocales,
