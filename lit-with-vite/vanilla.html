@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web Component Demo</title>
+    <style>
+      vanilla-wc::part(header) {
+        color: purple;
+        font-size: 2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      vanilla-wc a {
+        color: red;
+      }
+    </style>
+    <script type="module" src="/src/vanilla-wc.js"></script>
+  </head>
+  <body>
+    <vanilla-wc>
+      <div slot="nav">
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+      </div>
+      <p>
+        Come and listen to a story about a man named Jed,<br />
+        a poor mountaineer, barely kept his family fed.<br />
+        Then one day he was shootin at some food<br />
+        and up through the ground came a bubblin crude.
+      </p>
+    </vanilla-wc>
+  </body>
+</html>

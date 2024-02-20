@@ -17,6 +17,9 @@
         font-weight: bold;
         text-transform: uppercase;
       }
+      vanilla-wc a {
+        color: red;
+      }
     </style>
     <script
       defer
@@ -48,11 +51,15 @@
     <!-- <my-top></my-top> -->
 
     <vanilla-wc>
-      <div slot="nav">My nav will go here.</div>
+      <div slot="nav">
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+      </div>
       <p>
-        Come and listen to a story about a man named Jed A poor mountaineer,
-        barely kept his family fed, Then one day he was shootin at some food And
-        up through the ground came a bubblin crude.
+        Come and listen to a story about a man named Jed,<br />
+        a poor mountaineer, barely kept his family fed.<br />
+        Then one day he was shootin at some food<br />
+        and up through the ground came a bubblin crude.
       </p>
     </vanilla-wc>
 

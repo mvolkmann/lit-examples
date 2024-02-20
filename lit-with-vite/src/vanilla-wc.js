@@ -1,12 +1,9 @@
-export class VanillaWC extends HTMLElement {
+class VanillaWC extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({mode: 'open'});
-    this.render();
-  }
-
-  render() {
     const root = this.shadowRoot;
+
     root.innerHTML = `
       <div>
         <h2>Vanilla Web Component</h2>
@@ -26,9 +23,12 @@ export class VanillaWC extends HTMLElement {
         width: 30%;
       }
       slot[name="nav"]::slotted(*) {
-        color: red;
+        border-bottom: 1px solid blue;
       }
-      ::slotted(*) {
+      /* nav {
+        border-bottom: 1px solid blue;
+      } */
+      ::slotted(p) {
         color: green;
         font-style: italic;
       }
