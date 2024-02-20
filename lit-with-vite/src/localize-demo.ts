@@ -26,12 +26,6 @@ const languageMap = {
   zh: 'Chinese'
 };
 
-const colorToLanguageMap = {
-  red: {es: 'roja', zh: '红色'},
-  blue: {es: 'azul', zh: '蓝色'},
-  green: {es: 'verde', zh: '绿色'}
-};
-
 @customElement('localize-demo')
 @localized()
 export class LocalizeDemo extends LitElement {
@@ -40,9 +34,6 @@ export class LocalizeDemo extends LitElement {
 
   constructor() {
     super();
-
-    // The following line can be used in place of `@localized()` above.
-    //updateWhenLocaleChanges(this);
 
     for (const locale of allLocales) {
       const prefix = locale.split('-')[0];
@@ -56,18 +47,27 @@ export class LocalizeDemo extends LitElement {
     setLocale(select.value);
   }
 
+  translateColor(color) {
+    switch (color) {
+      case 'red':
+        return msg('red');
+      case 'blue':
+        return msg('blue');
+      case 'green':
+        return msg('green');
+      default:
+        return color;
+    }
+  }
+
   override render() {
     const text = msg('My favorite color is');
-
-    const localePrefix = getLocale().split('-')[0];
-    const languageMap = colorToLanguageMap[this.color];
-    const color = (languageMap && languageMap[localePrefix]) || this.color;
 
     return html`
       <select @change=${this.changeLocale}>
         ${this.options}
       </select>
-      <div>${text} ${color}.</div>
+      <div>${text} ${this.translateColor(this.color)}.</div>
     `;
   }
 }

@@ -6,6 +6,15 @@
   <source>My favorite color is</source>
   <target>我最喜欢的颜色是</target>
 </trans-unit>
+<trans-unit id="s89e9be1960f4c21c">
+  <source>red</source>
+</trans-unit>
+<trans-unit id="sc5ccd29bc2dda64d">
+  <source>blue</source>
+</trans-unit>
+<trans-unit id="s0f40f029637fecbc">
+  <source>green</source>
+</trans-unit>
 </body>
 </file>
 </xliff>

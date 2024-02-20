@@ -2,6 +2,18 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 <file target-language="es-419" source-language="en" original="lit-localize-inputs" datatype="plaintext">
 <body>
+<trans-unit id="s89e9be1960f4c21c">
+  <source>red</source>
+  <target>rouge</target>
+</trans-unit>
+<trans-unit id="sc5ccd29bc2dda64d">
+  <source>blue</source>
+  <target>azul</target>
+</trans-unit>
+<trans-unit id="s0f40f029637fecbc">
+  <source>green</source>
+  <target>verde</target>
+</trans-unit>
 <trans-unit id="s76a645967aec3ba2">
   <source>My favorite color is</source>
   <target>Mi color favorito es</target>
