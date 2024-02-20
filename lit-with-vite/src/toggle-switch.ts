@@ -40,7 +40,7 @@ export class ToggleSwitch extends LitElement {
       transition: background var(--transition-duration);
       width: var(--switch-width);
 
-      /* This render the thumb.
+      /* This renders the thumb.
         It is absolutely positioned inside the switch. */
       &:before {
         content: '';
