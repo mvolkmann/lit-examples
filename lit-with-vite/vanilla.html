@@ -3,6 +3,13 @@
   <head>
     <title>Web Component Demo</title>
     <style>
+      /* This specifies inheritable styles that will be
+         used by web components unless overridden. */
+      body {
+        color: blue;
+        font-family: sans-serif;
+      }
+
       /* This targets the part named "header" in the web component. */
       vanilla-wc::part(header) {
         color: purple;
