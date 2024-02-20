@@ -8,12 +8,15 @@
 </trans-unit>
 <trans-unit id="s89e9be1960f4c21c">
   <source>red</source>
+  <target>红色</target>
 </trans-unit>
 <trans-unit id="sc5ccd29bc2dda64d">
   <source>blue</source>
+  <target>蓝色</target>
 </trans-unit>
 <trans-unit id="s0f40f029637fecbc">
   <source>green</source>
+  <target>绿色</target>
 </trans-unit>
 </body>
 </file>

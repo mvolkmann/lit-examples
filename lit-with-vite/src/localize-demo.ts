@@ -47,27 +47,21 @@ export class LocalizeDemo extends LitElement {
     setLocale(select.value);
   }
 
-  translateColor(color) {
-    switch (color) {
-      case 'red':
-        return msg('red');
-      case 'blue':
-        return msg('blue');
-      case 'green':
-        return msg('green');
-      default:
-        return color;
-    }
-  }
-
   override render() {
     const text = msg('My favorite color is');
+
+    const colors = {
+      red: msg('red'),
+      blue: msg('blue'),
+      green: msg('green')
+    };
+    const color = colors[this.color] ?? this.color;
 
     return html`
       <select @change=${this.changeLocale}>
         ${this.options}
       </select>
-      <div>${text} ${this.translateColor(this.color)}.</div>
+      <div>${text} ${color}.</div>
     `;
   }
 }
