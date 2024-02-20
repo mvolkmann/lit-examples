@@ -1,7 +1,6 @@
 import {html, LitElement} from 'lit';
 import {consume, createContext, provide} from '@lit/context';
 import {customElement} from 'lit/decorators.js';
-import {dogContext, type Dog} from './dog-context.js';
 
 type Data = {count: number};
 export const dataContext = createContext<Data>('data');
