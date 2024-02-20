@@ -2,9 +2,10 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 <file target-language="zh-Hans" source-language="en" original="lit-localize-inputs" datatype="plaintext">
 <body>
-<trans-unit id="s76a645967aec3ba2">
-  <source>My favorite color is</source>
-  <target>我最喜欢的颜色是</target>
+<trans-unit id="s3876e59239587af2">
+  <source>My favorite color is <x id="0" equiv-text="${this.color}"/>.</source>
+
+  <target>我最喜欢的颜色是黄色<x id="0" equiv-text="${this.color}"/>。</target>
 </trans-unit>
 </body>
 </file>

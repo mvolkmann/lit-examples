@@ -8,7 +8,11 @@ import {
   updateWhenLocaleChanges
 } from '@lit/localize';
 
-import {sourceLocale, targetLocales} from './generated/locale-codes.js';
+import {
+  allLocales,
+  sourceLocale,
+  targetLocales
+} from './generated/locale-codes.js';
 
 export const {getLocale, setLocale} = configureLocalization({
   sourceLocale,
@@ -16,17 +20,35 @@ export const {getLocale, setLocale} = configureLocalization({
   loadLocale: locale => import(`./generated/locales/${locale}.ts`)
 });
 
-//TODO: Should including the next line make the call
-//TODO: to `updateWhenLocaleChanges(this)` unnecessary?
-// @localized()
+const languageMap = {
+  en: 'English',
+  es: 'Spanish',
+  zh: 'Chinese'
+};
+
+const colorToLanguageMap = {
+  red: {es: 'roja', zh: '红色'},
+  blue: {es: 'azul', zh: '蓝色'},
+  green: {es: 'verde', zh: '绿色'}
+};
+
 @customElement('localize-demo')
+@localized()
 export class LocalizeDemo extends LitElement {
   @property() color = 'red';
+  options: string[] = [];
 
   constructor() {
     super();
-    console.log('localize-demo.ts : targetLocales =', targetLocales);
-    updateWhenLocaleChanges(this);
+
+    // The following line can be used in place of `@localized()` above.
+    //updateWhenLocaleChanges(this);
+
+    for (const locale of allLocales) {
+      const prefix = locale.split('-')[0];
+      const display = languageMap[prefix] || locale;
+      this.options.push(html`<option value=${locale}>${display}</option>`);
+    }
   }
 
   changeLocale(e: Event) {
@@ -35,15 +57,17 @@ export class LocalizeDemo extends LitElement {
   }
 
   override render() {
-    const locale = getLocale();
-    const text = msg(str`My favorite color is ${this.color}.`);
+    const text = msg('My favorite color is');
+
+    const localePrefix = getLocale().split('-')[0];
+    const languageMap = colorToLanguageMap[this.color];
+    const color = (languageMap && languageMap[localePrefix]) || this.color;
+
     return html`
       <select @change=${this.changeLocale}>
-        <option>en</option>
-        <option>es-419</option>
-        <option>zh-Hans</option>
+        ${this.options}
       </select>
-      <div>${text}</div>
+      <div>${text} ${color}.</div>
     `;
   }
 }
