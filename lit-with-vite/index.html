@@ -40,6 +40,12 @@
     <script type="module" src="/src/task-demo.ts"></script>
     <script type="module" src="/src/toggle-switch.ts"></script>
     <script type="module" src="/src/vanilla-wc.js"></script>
+    <script>
+      function handleToggle(event) {
+        const {checked} = event.detail;
+        console.log('handleToggle: checked =', checked);
+      }
+    </script>
   </head>
   <body x-data="{name: 'Shadow', text: 'initial', show: false}">
     <!-- <my-element>
@@ -79,7 +85,11 @@
       </ul>
     </slots-demo>
 
-    <toggle-switch></toggle-switch>
+    <toggle-switch
+      label="Bluetooth"
+      @toggle="handleToggle($event)"
+    ></toggle-switch>
+    <toggle-switch label="Wifi" checked></toggle-switch>
 
     <!-- <my-parent></my-parent> -->
     <!-- <localize-demo color="green"></localize-demo> -->

@@ -3,14 +3,28 @@ import {customElement, property} from 'lit/decorators.js';
 
 @customElement('toggle-switch')
 export class ToggleSwitch extends LitElement {
+  @property() label = '';
   @property({type: Boolean}) checked = false;
 
+  handleChange(event) {
+    const {checked} = event.target;
+    const newEvent = new CustomEvent('toggle', {
+      detail: {checked}
+    });
+    this.dispatchEvent(newEvent);
+  }
+
   render() {
-    this.shadowRoot.innerHTML = `
+    return html`
       <label>
-        <input class="thumb" type="checkbox" />
+        <input
+          class="thumb"
+          type="checkbox"
+          ?checked=${this.checked}
+          @change=${this.handleChange}
+        />
         <div class="switch"></div>
-        <span class="label">Bluetooth</span>
+        <span class="label">${this.label}</span>
       </label>
     `;
   }
