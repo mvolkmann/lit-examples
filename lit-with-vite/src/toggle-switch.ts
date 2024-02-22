@@ -1,3 +1,14 @@
+/**
+ * To customize the styling, set these CSS variables:
+ *
+ * --label-color: purple;
+ * --off-bg: red;
+ * --on-bg: blue;
+ * --padding: 1rem;
+ * --switch-height: 4rem;
+ * --thumb-bg: yellow;
+ * --transition-duration: 1s;
+ */
 import {css, html, LitElement} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 
@@ -24,47 +35,45 @@ export class ToggleSwitch extends LitElement {
           @change=${this.handleChange}
         />
         <div class="switch"></div>
-        <span class="label">${this.label}</span>
+        <span class="label" part="label">${this.label}</span>
       </label>
     `;
   }
 
   static styles = css`
     label {
-      --off-bg: gray;
-      --on-bg: green;
-      --padding: 0.25rem;
-      --switch-height: 2rem;
-      --switch-width: calc(var(--switch-height) * 1.8);
-      --thumb-bg: lightgray;
-      --thumb-size: calc(var(--switch-height) - var(--padding) * 2);
-      --transition-duration: 0.3s;
+      --use-padding: var(--padding, 0.25rem);
+      --use-switch-height: var(--switch-height, 2rem);
+      --switch-width: calc(var(--use-switch-height) * 1.8);
+      --thumb-size: calc(var(--use-switch-height) - var(--use-padding) * 2);
+      --use-transition-duration: var(--transition-duration, 0.3s);
 
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      color: var(--label-color, black);
       cursor: pointer;
     }
 
     .switch {
-      background-color: var(--off-bg);
-      border-radius: calc(var(--switch-height) / 2);
-      height: var(--switch-height);
+      background-color: var(--off-bg, gray);
+      border-radius: calc(var(--use-switch-height) / 2);
+      height: var(--use-switch-height);
       position: relative;
-      transition: background var(--transition-duration);
+      transition: background var(--use-transition-duration);
       width: var(--switch-width);
 
       /* This renders the thumb.
         It is absolutely positioned inside the switch. */
       &:before {
         content: '';
-        background-color: var(--thumb-bg);
+        background-color: var(--thumb-bg, lightgray);
         border-radius: 50%;
-        transition: left var(--transition-duration);
+        transition: left var(--use-transition-duration);
 
         position: absolute;
-        top: var(--padding);
-        left: var(--padding); /* unchecked position */
+        top: var(--use-padding);
+        left: var(--use-padding); /* unchecked position */
 
         width: var(--thumb-size);
         height: var(--thumb-size);
@@ -72,11 +81,11 @@ export class ToggleSwitch extends LitElement {
 
       /* The thumb is a preceding sibling of the switch. */
       .thumb:checked + & {
-        background-color: var(--on-bg);
+        background-color: var(--on-bg, green);
         &:before {
           /* checked position */
           left: calc(
-            var(--switch-width) - var(--switch-height) + var(--padding)
+            var(--switch-width) - var(--use-switch-height) + var(--use-padding)
           );
         }
       }
