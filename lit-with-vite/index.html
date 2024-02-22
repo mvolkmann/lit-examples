@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + Lit + TS</title>
     <link rel="stylesheet" href="./src/index.css" />
+    <link rel="stylesheet" href="./alpine-toggle-switch.css" />
     <style>
       :root {
         --greet-message-color: green;
@@ -104,16 +105,25 @@
       checked
       @toggle="handleToggle($event)"
     ></toggle-switch-wc>
+
     <toggle-switch-lit
       label="Lit"
       checked
       @toggle="handleToggle($event)"
     ></toggle-switch-lit>
-    <toggle-switch-alpine
-      label="Alpine"
-      checked
-      @toggle="handleToggle($event)"
-    ></toggle-switch-alpine>
+
+    <label class="alpine-toggle-switch">
+      <input
+        class="thumb"
+        type="checkbox"
+        checked="${checked}"
+        @change="e => {
+          console.log('Alpine checked =', e.target.checked);
+        }"
+      />
+      <div class="switch"></div>
+      <span class="label" part="label">Alpine</span>
+    </label>
 
     <!-- <my-parent></my-parent> -->
     <!-- <localize-demo color="green"></localize-demo> -->
