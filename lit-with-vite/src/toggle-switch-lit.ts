@@ -13,7 +13,7 @@ import {css, html, LitElement} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 
 @customElement('toggle-switch-lit')
-export class ToggleSwitch extends LitElement {
+export class ToggleSwitchLit extends LitElement {
   @property() label = '';
   @property({type: Boolean}) checked = false;
 

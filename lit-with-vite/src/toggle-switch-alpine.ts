@@ -1,17 +1,12 @@
-export class ToggleSwitchWC extends HTMLElement {
+export class ToggleSwitchAlpine extends HTMLElement {
   constructor() {
     super();
 
     const label = this.getAttribute('label');
     const checked = this.getAttribute('checked');
 
-    this.attachShadow({mode: 'open'});
-
-    /** @type {ShadowRoot} */
-    const root = this.shadowRoot!;
-
-    root.innerHTML = `
-      <style>${ToggleSwitchWC.styles}</style>
+    this.innerHTML = `
+      <style>${ToggleSwitchAlpine.styles}</style>
       <label>
         <input
           class="thumb"
@@ -24,14 +19,11 @@ export class ToggleSwitchWC extends HTMLElement {
       </label>
     `;
 
-    const checkbox = root.querySelector('input');
+    const checkbox = this.querySelector('input');
     checkbox?.addEventListener('change', this.handleChange.bind(this));
   }
 
   handleChange(event: Event) {
-    /** @type {ShadowRoot} */
-    const root = this.shadowRoot!;
-
     // @ts-ignore
     const {checked} = event.target;
     const newEvent = new CustomEvent('toggle', {detail: {checked}});
@@ -99,4 +91,4 @@ export class ToggleSwitchWC extends HTMLElement {
 `;
 }
 
-customElements.define('toggle-switch-wc', ToggleSwitchWC);
+customElements.define('toggle-switch-alpine', ToggleSwitchAlpine);
