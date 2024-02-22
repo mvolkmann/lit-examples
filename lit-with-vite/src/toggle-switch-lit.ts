@@ -17,15 +17,6 @@ export class ToggleSwitch extends LitElement {
   @property() label = '';
   @property({type: Boolean}) checked = false;
 
-  handleChange(event: Event) {
-    // @ts-ignore
-    const {checked} = event.target;
-    const newEvent = new CustomEvent('toggle', {
-      detail: {checked}
-    });
-    this.dispatchEvent(newEvent);
-  }
-
   render() {
     return html`
       <label>
@@ -39,6 +30,13 @@ export class ToggleSwitch extends LitElement {
         <span class="label" part="label">${this.label}</span>
       </label>
     `;
+  }
+
+  handleChange(event: Event) {
+    // @ts-ignore
+    const {checked} = event.target;
+    const newEvent = new CustomEvent('toggle', {detail: {checked}});
+    this.dispatchEvent(newEvent);
   }
 
   static styles = css`
