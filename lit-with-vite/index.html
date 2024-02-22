@@ -50,7 +50,8 @@
     <script type="module" src="/src/slots-demo.ts"></script>
     <script type="module" src="/src/state-changes.ts"></script>
     <script type="module" src="/src/task-demo.ts"></script>
-    <script type="module" src="/src/toggle-switch.ts"></script>
+    <script type="module" src="/src/toggle-switch-lit.ts"></script>
+    <script type="module" src="/src/toggle-switch-wc.ts"></script>
     <script type="module" src="/src/vanilla-wc.js"></script>
     <script>
       function handleToggle(event) {
@@ -97,11 +98,16 @@
       </ul>
     </slots-demo>
 
-    <toggle-switch
+    <toggle-switch-lit
       label="Bluetooth"
+      checked
       @toggle="handleToggle($event)"
-    ></toggle-switch>
-    <toggle-switch label="Wifi" checked></toggle-switch>
+    ></toggle-switch-lit>
+    <toggle-switch-wc
+      label="Wifi"
+      checked
+      @toggle="handleToggle($event)"
+    ></toggle-switch-wc>
 
     <!-- <my-parent></my-parent> -->
     <!-- <localize-demo color="green"></localize-demo> -->

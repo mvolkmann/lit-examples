@@ -12,12 +12,13 @@
 import {css, html, LitElement} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 
-@customElement('toggle-switch')
+@customElement('toggle-switch-lit')
 export class ToggleSwitch extends LitElement {
   @property() label = '';
   @property({type: Boolean}) checked = false;
 
-  handleChange(event) {
+  handleChange(event: Event) {
+    // @ts-ignore
     const {checked} = event.target;
     const newEvent = new CustomEvent('toggle', {
       detail: {checked}
