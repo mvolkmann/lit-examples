@@ -1,4 +1,4 @@
-label.alpine-toggle-switch {
+label.toggle-switch {
   --use-padding: var(--padding, 0.25rem);
   --use-switch-height: var(--switch-height, 2rem);
   --switch-width: calc(var(--use-switch-height) * 1.8);
