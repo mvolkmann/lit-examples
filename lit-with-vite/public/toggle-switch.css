@@ -20,7 +20,7 @@ label.toggle-switch {
     width: var(--switch-width);
 
     /* This renders the thumb.
-        It is absolutely positioned inside the switch. */
+       It is absolutely positioned inside the switch. */
     &:before {
       content: '';
       background-color: var(--thumb-bg, lightgray);
@@ -48,8 +48,8 @@ label.toggle-switch {
   }
 
   /* The thumb input is only used to hold the checked state.
-        It is not rendered. Instead, the before content of the switch
-        is used for the thumb. */
+     It is not rendered. Instead, the before content of the switch
+     is used for the thumb. */
   & .thumb {
     position: absolute;
     visibility: hidden;

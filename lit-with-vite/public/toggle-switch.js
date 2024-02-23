@@ -11,11 +11,9 @@ function toggleSwitch(targetId, label, checked, callback) {
   target.appendChild(clone);
 }
 
-window.onload = () => {
-  toggleSwitch('target1', 'Bluetooth', true, e => {
-    console.log('Bluetooth:', e.target.checked);
-  });
-  toggleSwitch('target2', 'Wifi', false, e => {
-    console.log('Wifi:', e.target.checked);
-  });
-};
+toggleSwitch('target1', 'Bluetooth', true, e => {
+  console.log('Bluetooth:', e.target.checked);
+});
+toggleSwitch('target2', 'Wifi', false, e => {
+  console.log('Wifi:', e.target.checked);
+});
