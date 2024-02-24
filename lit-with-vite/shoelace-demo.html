@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Shoelace Demo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/themes/light.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/shoelace-autoloader.js"
+    ></script>
+    <script>
+      function handleChange(event) {
+        const {checked} = event.target;
+        console.log('checked =', checked);
+      }
+    </script>
+    <style>
+      body {
+        padding: 3rem;
+      }
+    </style>
+  </head>
+  <body x-data>
+    <div>
+      <sl-switch size="large" checked @sl-change="handleChange">
+        Shoelace
+      </sl-switch>
+    </div>
+  </body>
+</html>

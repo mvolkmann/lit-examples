@@ -17,7 +17,6 @@ export class ToggleSwitchWC extends HTMLElement {
           class="thumb"
           type="checkbox"
           checked=${checked}
-          @change=${this.handleChange}
         />
         <div class="switch"></div>
         <span class="label" part="label">${label}</span>
