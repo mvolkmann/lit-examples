@@ -27,7 +27,7 @@ export class ToggleSwitchLit extends LitElement {
           @change=${this.handleChange}
         />
         <div class="switch"></div>
-        <span class="label" part="label">${this.label}</span>
+        <span class="label">${this.label}</span>
       </label>
     `;
   }

@@ -19,7 +19,7 @@ export class ToggleSwitchWC extends HTMLElement {
           checked=${checked}
         />
         <div class="switch"></div>
-        <span class="label" part="label">${label}</span>
+        <span class="label">${label}</span>
       </label>
     `;
 
