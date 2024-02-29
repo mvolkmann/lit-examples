@@ -21,6 +21,7 @@ export class ToggleSwitchWC extends HTMLElement {
     return ['checked', 'label'];
   }
 
+  // This is handled automatically for @property values in Lit.
   attributeChangedCallback(
     name: string,
     _: string | null,

@@ -59,6 +59,28 @@
         const {checked} = event.detail;
         console.log('handleToggle: checked =', checked);
       }
+
+      function updateLitWC() {
+        const wc = document.querySelector('toggle-switch-lit');
+        const checked = wc.getAttribute('checked');
+        if (checked === null) {
+          wc.setAttribute('checked', 'checked');
+        } else {
+          wc.removeAttribute('checked');
+        }
+        wc.setAttribute('label', Date.now());
+      }
+
+      function updatePlainWC() {
+        const wc = document.querySelector('toggle-switch-wc');
+        const checked = wc.getAttribute('checked');
+        if (checked === null) {
+          wc.setAttribute('checked', 'checked');
+        } else {
+          wc.removeAttribute('checked');
+        }
+        wc.setAttribute('label', Date.now());
+      }
     </script>
   </head>
   <body x-data="{name: 'Shadow', text: 'initial', show: false}">
@@ -106,12 +128,14 @@
       checked
       @toggle="handleToggle($event)"
     ></toggle-switch-wc>
+    <button @click="updatePlainWC">Update Plain WC</button>
 
     <toggle-switch-lit
       label="Lit"
       checked
       @toggle="handleToggle($event)"
     ></toggle-switch-lit>
+    <button @click="updateLitWC">Update Lit WC</button>
 
     <!-- <my-parent></my-parent> -->
     <!-- <localize-demo color="green"></localize-demo> -->
