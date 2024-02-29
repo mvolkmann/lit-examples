@@ -2,29 +2,44 @@ export class ToggleSwitchWC extends HTMLElement {
   constructor() {
     super();
 
-    const label = this.getAttribute('label');
-    const checked = this.getAttribute('checked');
-
     this.attachShadow({mode: 'open'});
-
-    /** @type {ShadowRoot} */
     const root = this.shadowRoot!;
-
     root.innerHTML = `
       <style>${ToggleSwitchWC.styles}</style>
       <label>
-        <input
-          class="thumb"
-          type="checkbox"
-          checked=${checked}
-        />
+        <input class="thumb" type="checkbox" />
         <div class="switch"></div>
-        <span class="label">${label}</span>
+        <span class="label"></span>
       </label>
     `;
 
     const checkbox = root.querySelector('input');
     checkbox?.addEventListener('change', this.handleChange.bind(this));
+  }
+
+  static get observedAttributes() {
+    return ['checked', 'label'];
+  }
+
+  attributeChangedCallback(
+    name: string,
+    _: string | null,
+    newValue: string | null
+  ) {
+    const root = this.shadowRoot!;
+    if (name === 'checked') {
+      const checkbox = root.querySelector('input');
+      if (checkbox) {
+        if (newValue === null) {
+          checkbox.removeAttribute('checked');
+        } else {
+          checkbox.setAttribute('checked', 'checked');
+        }
+      }
+    } else if (name === 'label') {
+      const span = root.querySelector('.label');
+      if (span) span.textContent = newValue;
+    }
   }
 
   handleChange(event: Event) {
