@@ -36,4 +36,10 @@ export class NumberSlider extends LitElement {
     const detail = event.target.value;
     this.dispatchEvent(new CustomEvent("change", { detail }));
   }
+
+  // Without this, after dragging the slider handle it will not update
+  // when a new value for the "value" attribute is passed in.
+  updated() {
+    this.renderRoot.querySelector("input").value = String(this.value);
+  }
 }
