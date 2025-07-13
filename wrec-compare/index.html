@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <script src="binding-demo.ts" type="module"></script>
+    <script src="counter-lit.ts" type="module"></script>
+    <script src="data-star.ts" type="module"></script>
+    <script src="hello-world.ts" type="module"></script>
+    <script src="multiply-numbers.ts" type="module"></script>
+    <script src="number-input.ts" type="module"></script>
+    <script src="number-slider.ts" type="module"></script>
+    <script src="radio-group.ts" type="module"></script>
+    <script src="select-list.ts" type="module"></script>
+    <script src="temperature-eval.ts" type="module"></script>
+  </head>
+  <body>
+    <h1>Lit Demo</h1>
+
+    <counter-lit number="5"></counter-lit>
+    <hello-world></hello-world>
+    <hello-world name="Mark"></hello-world>
+    <temperature-eval temperature="100"></temperature-eval>
+    <multiply-numbers n1="3" n2="4"></multiply-numbers>
+    <hr />
+    <form method="GET" action="/missing">
+      <binding-demo
+        name="Mark"
+        color="blue"
+        options="red,green,blue"
+        score="5"
+        story="Once upon a time..."
+      ></binding-demo>
+      <button>Submit</button>
+      <button type="reset">Reset</button>
+    </form>
+    <data-star username="Mark"></data-star>
+  </body>
+</html>
