@@ -2,7 +2,7 @@ import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 @customElement("number-input")
-class NumberInput extends LitElement {
+export class NumberInput extends LitElement {
   @property({ type: String }) label = "";
   @property({ type: Number }) value = 0;
 
@@ -31,16 +31,32 @@ class NumberInput extends LitElement {
 
   render() {
     return html`
-      <label>this.label</label>
+      <label>${this.label}</label>
       <button
         ?disabled=${this.value === 0}
-        @onclick=${() => this.value--}
+        @click=${this.decrement}
         type="button"
       >
         -
       </button>
-      <input type="number" value="this.value" />
-      <button @click=${() => this.value++} type="button">+</button>
+      <input type="number" value=${this.value} @input=${this.handleInput} />
+      <button @click=${this.increment} type="button">+</button>
     `;
+  }
+
+  decrement() {
+    this.dispatchChange(--this.value);
+  }
+
+  increment() {
+    this.dispatchChange(++this.value);
+  }
+
+  handleInput(event) {
+    this.dispatchChange(event.target.value);
+  }
+
+  dispatchChange(detail) {
+    this.dispatchEvent(new CustomEvent("change", { detail }));
   }
 }

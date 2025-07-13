@@ -1,12 +1,19 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
+/**
+ * Data binding in Lit is not two-way like in wrec.
+ * A Lit component cannot simply pass one of its properties to
+ * a child Lit component and have the child can update the property.
+ * The child must emit a custom event that
+ * the parent listens for so it can update its own state.
+ */
 @customElement("binding-demo")
 export class BindingDemo extends LitElement {
   @property({ type: String }) color = "";
   @property({ type: String }) name = "";
   @property({ type: String }) options = "";
-  @property({ type: Number }) score = 0;
+  @property({ type: Number }) score = 5;
   @property({ type: String }) story = "";
 
   static styles = css`
@@ -21,6 +28,7 @@ export class BindingDemo extends LitElement {
 
   render() {
     return html`
+      <!--
       <div id="input-demo">
         <label>Name:</label>
         <input value=${this.name} />
@@ -50,10 +58,23 @@ export class BindingDemo extends LitElement {
         <textarea>${this.story}</textarea>
         <p>Your story is <span>${this.story}</span>.</p>
       </div>
-      <number-input label="Favorite Number:" value=${this.score}></number-input>
-      <number-slider label="Slider:" value=${this.score}></number-slider>
+      -->
+      <number-input
+        label="Favorite Number:"
+        value=${this.score}
+        @change=${this.handleChange}
+      ></number-input>
+      <number-slider
+        label="Slider:"
+        value=${this.score}
+        @change=${this.handleChange}
+      ></number-slider>
       <p id="score-p">Your score is <span>${this.score}</span>.</p>
     `;
+  }
+
+  handleChange(event) {
+    this.score = event.detail;
   }
 
   /*

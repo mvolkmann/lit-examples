@@ -23,7 +23,17 @@ export class NumberSlider extends LitElement {
   render() {
     return html`
       <label>${this.label}</label>
-      <input type="range" min="0" value=${this.value} />
+      <input
+        type="range"
+        min="0"
+        value=${this.value}
+        @input=${this.handleChange}
+      />
     `;
+  }
+
+  handleChange(event) {
+    const detail = event.target.value;
+    this.dispatchEvent(new CustomEvent("change", { detail }));
   }
 }
