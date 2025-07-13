@@ -32,4 +32,8 @@ export class SelectList extends LitElement {
     this.value = event.target.value;
     this.dispatchEvent(new CustomEvent("change", { detail: this.value }));
   }
+
+  updated() {
+    this.renderRoot.querySelector("select").value = this.value;
+  }
 }

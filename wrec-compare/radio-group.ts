@@ -58,4 +58,11 @@ export class RadioGroup extends LitElement {
       </div>
     `;
   }
+
+  updated() {
+    const inputs = this.renderRoot.querySelectorAll("input");
+    for (const input of inputs) {
+      input.checked = input.value === this.value;
+    }
+  }
 }
