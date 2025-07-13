@@ -56,7 +56,10 @@ export class BindingDemo extends LitElement {
       </p>
       <div id="textarea-demo">
         <label>Story:</label>
-        <textarea>${this.story}</textarea>
+        <textarea
+          .value=${this.story}
+          @input=${this.handleStoryChange}
+        ></textarea>
         <p>Your story is <span>${this.story}</span>.</p>
       </div>
       <number-input
@@ -85,12 +88,15 @@ export class BindingDemo extends LitElement {
     this.score = event.detail;
   }
 
-  /*
+  handleStoryChange(event) {
+    this.story = event.target.value;
+  }
+
   formResetCallback() {
+    console.log("binding-demo.ts formResetCallback: entered");
     this.color = "red";
     this.name = "";
     this.score = 0;
     this.story = "";
   }
-  */
 }

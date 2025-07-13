@@ -27,7 +27,6 @@ export class RadioGroup extends LitElement {
 
   render() {
     // Lit re-renders the whole component on every radio button click.
-    console.log("radio-group.ts render: entered");
     return html`
       <div>
         ${this.options.split(",").map((option) => this.makeRadio(option))}
@@ -43,7 +42,6 @@ export class RadioGroup extends LitElement {
   makeRadio(option) {
     //TODO: Why is this called after every option click?
     //TODO: This is not called each time in the wrec version.
-    console.log("radio-group.ts makeRadio: option =", option);
     return html`
       <div>
         <input
