@@ -16,7 +16,7 @@ export class SelectList extends LitElement {
 
   render() {
     return html`
-      <select name=${this.name} value="this.value">
+      <select name=${this.name} value="this.value" @change=${this.handleChange}>
         ${this.options.split(",").map((option) => this.makeOption(option))}
       </select>
     `;
@@ -26,5 +26,10 @@ export class SelectList extends LitElement {
   // called from the expression in the html method.
   makeOption(option) {
     return html` <option value=${option}>${option}</option> `;
+  }
+
+  handleChange(event) {
+    this.value = event.target.value;
+    this.dispatchEvent(new CustomEvent("change", { detail: this.value }));
   }
 }

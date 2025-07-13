@@ -37,6 +37,7 @@ export class RadioGroup extends LitElement {
 
   handleChange(event) {
     this.value = event.target.value;
+    this.dispatchEvent(new CustomEvent("change", { detail: this.value }));
   }
 
   makeRadio(option) {

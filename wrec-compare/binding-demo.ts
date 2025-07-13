@@ -28,10 +28,9 @@ export class BindingDemo extends LitElement {
 
   render() {
     return html`
-      <!--
       <div id="input-demo">
         <label>Name:</label>
-        <input value=${this.name} />
+        <input value=${this.name} @input=${this.handleNameChange} />
         <p>Hello, <span>${this.name}</span>!</p>
       </div>
       <div style="display: flex">
@@ -40,6 +39,7 @@ export class BindingDemo extends LitElement {
           name="color1"
           options=${this.options}
           value=${this.color}
+          @change=${this.handleColorChange}
         ></radio-group>
       </div>
       <div>
@@ -48,6 +48,7 @@ export class BindingDemo extends LitElement {
           name="color2"
           options=${this.options}
           value=${this.color}
+          @change=${this.handleColorChange}
         ></select-list>
       </div>
       <p id="selected-color">
@@ -58,22 +59,29 @@ export class BindingDemo extends LitElement {
         <textarea>${this.story}</textarea>
         <p>Your story is <span>${this.story}</span>.</p>
       </div>
-      -->
       <number-input
         label="Favorite Number:"
         value=${this.score}
-        @change=${this.handleChange}
+        @change=${this.handleScoreChange}
       ></number-input>
       <number-slider
         label="Slider:"
         value=${this.score}
-        @change=${this.handleChange}
+        @change=${this.handleScoreChange}
       ></number-slider>
       <p id="score-p">Your score is <span>${this.score}</span>.</p>
     `;
   }
 
-  handleChange(event) {
+  handleColorChange(event) {
+    this.color = event.detail;
+  }
+
+  handleNameChange(event) {
+    this.name = event.target.value;
+  }
+
+  handleScoreChange(event) {
     this.score = event.detail;
   }
 
